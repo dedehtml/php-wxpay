@@ -1,1 +1,1 @@
-o # php-wxpay
+php-wxpay
