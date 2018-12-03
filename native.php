@@ -6,11 +6,11 @@ require_once "service/WxPay.NativePay.php";
 $notify = new \NativePay();
 $input = new \WxPayUnifiedOrder();
 
-$subject = 'lalallaala';
+$subject = 'lalallaala';//商品描述
 $oid = time();//商户订单号，商户网站订单系统中唯一订单号
-$total_fee = 1;//分为单位
-$pid = time();
-$notify_url = '';
+$total_fee = 1;//价格，分为单位
+$pid = time();//自定义商品id
+$notify_url = '';//回调地址
 
 $input->SetBody($subject);
 $input->SetOut_trade_no($oid);
