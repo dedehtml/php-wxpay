@@ -16,6 +16,7 @@ $notify = new \WxPayApi();
 $result = $notify->orderQuery($config, $input);
 //通信成功&&校验成功&&订单完成
 if($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS' && $result['trade_state'] == 'SUCCESS'){
+    //todo业务逻辑处理
     echo 'success';
     exit;
 }
