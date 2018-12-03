@@ -8,14 +8,14 @@ require_once "service/WxPay.Config.php";
 $postXml = file_get_contents("php://input");
 //xml转array
 $postArr = json_decode(json_encode(simplexml_load_string($postXml, 'SimpleXMLElement', LIBXML_NOCDATA), JSON_UNESCAPED_UNICODE), true);
-
+//微信api查询订单
 $input = new \WxPayOrderQuery();
 $input->SetTransaction_id($postArr['transaction_id']);
 $config = new \WxPayConfig();
 $notify = new \WxPayApi();
 $result = $notify->orderQuery($config, $input);
-
-if($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS'){
+//通信成功&&校验成功&&订单完成
+if($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS' && $result['trade_state'] == 'SUCCESS'){
     echo 'success';
     exit;
 }
